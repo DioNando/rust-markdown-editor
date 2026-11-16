@@ -1,18 +1,18 @@
 [package]
 name = "md_tauri"
-version = "0.1.0"
+version = "1.0.0"
 edition = "2024"
 
 [dependencies]
 pulldown-cmark = "0.13.6"
 rfd = "0.18.0"
 serde = { version = "1.0.229", features = ["derive"] }
-tauri = "2.12.6"
+tauri = { version = "2.12.6", features = [] }
 tauri-plugin-opener = "2.7.3"
 tauri-plugin-single-instance = "2"
 
 [build-dependencies]
-tauri-build = "2.7.5"
+tauri-build = { version = "2.7.5", features = [] }
 
 # Dépendances compilées sans infos de débogage en dev : la crate `windows`
 # faisait planter rustc par manque de mémoire (STATUS_STACK_BUFFER_OVERRUN).
