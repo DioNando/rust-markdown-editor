@@ -135,3 +135,8 @@ cargo run --release
 - [highlight.js](https://highlightjs.org/) (BSD-3), [KaTeX](https://katex.org/) (MIT), [Mermaid](https://mermaid.js.org/) (MIT)
 - Polices [Inter](https://rsms.me/inter/) et [Lora](https://github.com/cyrealtype/Lora-Cyrillic) (SIL OFL), icônes [Material Symbols](https://fonts.google.com/icons) (Apache 2.0)
 - Pictogramme de l'application : « document code » de [SVG Repo](https://www.svgrepo.com/)
+
+## Licence
+
+Code publié sous licence [MIT](LICENSE) : libre d'utilisation, de modification et de redistribution, à condition de conserver la mention de copyright.
+Les bibliothèques et polices embarquées gardent leurs propres licences (voir ci-dessus).
