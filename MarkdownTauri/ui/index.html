@@ -18,26 +18,26 @@
     </div>
 
     <nav class="segmented" aria-label="Mode d'affichage du panneau actif">
-      <button data-mode="edit"><span class="ms">edit</span>Éditer</button>
-      <button data-mode="split"><span class="ms">vertical_split</span>Côte à côte</button>
-      <button data-mode="preview"><span class="ms">menu_book</span>Lire</button>
+      <button data-mode="edit" title="Éditer" aria-label="Éditer"><span class="ms">edit</span><span class="lbl">Éditer</span></button>
+      <button data-mode="split" title="Côte à côte" aria-label="Côte à côte"><span class="ms">vertical_split</span><span class="lbl">Côte à côte</span></button>
+      <button data-mode="preview" title="Lire" aria-label="Lire"><span class="ms">menu_book</span><span class="lbl">Lire</span></button>
     </nav>
 
     <div class="actions" data-tauri-drag-region>
       <button id="btn-split" class="btn-ghost icon" title="Fractionner la vue (Ctrl+\)">
         <span class="ms">splitscreen_right</span>
       </button>
-      <span class="sep"></span>
+      <span class="sep" aria-hidden="true"></span>
       <button id="btn-open" class="btn-ghost" title="Ouvrir (Ctrl+O)">
-        <span class="ms">folder_open</span>Ouvrir
+        <span class="ms">folder_open</span><span class="lbl">Ouvrir</span>
       </button>
       <button id="btn-save-as" class="btn-ghost icon" title="Enregistrer sous (Ctrl+Maj+S)">
         <span class="ms">save_as</span>
       </button>
       <button id="btn-save" class="btn-primary" title="Enregistrer (Ctrl+S)">
-        <span class="ms">save</span>Enregistrer
+        <span class="ms">save</span><span class="lbl">Enregistrer</span>
       </button>
-      <span class="sep"></span>
+      <span class="sep" aria-hidden="true"></span>
       <button id="btn-theme" class="btn-ghost icon" title="Changer de thème">
         <span class="ms when-light">dark_mode</span>
         <span class="ms when-dark">light_mode</span>

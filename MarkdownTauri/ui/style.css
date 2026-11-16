@@ -469,3 +469,56 @@ button.tab-new:hover { background: var(--surface); box-shadow: var(--shadow-subt
 #win-close:hover { background: var(--papaya); color: #fff; }
 .when-max, .is-maximized .when-normal { display: none; }
 .is-maximized .when-max { display: inline; }
+
+/* =====================================================================
+   Responsive
+   1) Barre du haut : les libellés disparaissent par paliers (icônes seules,
+      le libellé reste en bulle d'aide). La colonne de droite ne se compresse
+      jamais : c'est le nom du fichier qui cède (points de suspension).
+   2) Panneaux : container queries, chaque panneau réagit à SA largeur
+      (utile en vue fractionnée) : en « Côte à côte » étroit, éditeur et
+      aperçu s'empilent ; marges resserrées.
+   ===================================================================== */
+.toolbar { grid-template-columns: minmax(0, 1fr) auto minmax(max-content, 1fr); }
+.file { overflow: hidden; }
+.lbl { white-space: nowrap; }
+
+@media (max-width: 1120px) {
+  .segmented button { padding: 0; width: 38px; justify-content: center; }
+  .segmented .lbl { display: none; }
+}
+@media (max-width: 920px) {
+  .toolbar { gap: 10px; padding-left: 14px; }
+  #btn-open, #btn-save { padding: 0; width: 36px; justify-content: center; }
+  #btn-open .lbl, #btn-save .lbl { display: none; }
+  #filename { font-size: 18px; }
+  .workspace { gap: 12px; padding: 0 12px 4px; }
+}
+@media (max-width: 740px) {
+  #filename, #dirty { display: none; }
+  .actions .sep { margin: 0 2px; }
+  .window-controls { margin-left: 4px; }
+  .statusbar { padding: 0 14px; }
+  #status { display: none; }
+  .statusbar { justify-content: flex-end; }
+}
+
+.group { container: group / inline-size; }
+.tab { max-width: min(230px, 60cqi); }
+
+@container group (max-width: 760px) {
+  .markdown { padding: 32px 26px 80px; }
+  .markdown h1 { font-size: 36px; }
+  .markdown h2 { font-size: 24px; }
+  .markdown blockquote { font-size: 20px; padding: 18px 20px 18px 46px; }
+  .markdown blockquote::before { font-size: 44px; left: 14px; }
+  .editor, .highlight { padding: 22px 22px 40vh; }
+}
+/* « Côte à côte » trop étroit : éditeur au-dessus, aperçu en dessous */
+@container group (max-width: 620px) {
+  .group-body[data-mode="split"] { flex-direction: column; gap: 12px; }
+  .group-body[data-mode="split"] .editor-pane,
+  .group-body[data-mode="split"] .preview-pane { flex: 1 1 0; min-height: 0; }
+  .group-body[data-mode="split"] .divider { display: none; }
+  .markdown { padding: 24px 20px 60px; }
+}
