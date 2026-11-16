@@ -236,7 +236,7 @@ button.icon { width: 40px; padding: 0; justify-content: center; }
 .tab-icon { display: none; }
 .tab-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-.tab-close {
+button.tab-close {
   width: 24px; height: 24px; padding: 0; justify-content: center; flex: none;
   border-radius: 50%; color: var(--muted); opacity: 0;
 }
@@ -249,8 +249,9 @@ button.icon { width: 40px; padding: 0; justify-content: center; }
 .tab.dirty .tab-close:hover .ms { display: inline; }
 .tab.dirty .tab-close:hover::before { display: none; }
 
-.tab-new { width: 34px; height: 34px; flex: none; border-radius: 50%; border: 1px solid var(--line); color: var(--muted); }
-.tab-new:hover { background: var(--sky); border-color: transparent; color: var(--on-accent); }
+button.tab-new { width: 34px; height: 34px; aspect-ratio: 1; padding: 0; flex: none; border-radius: 50%; border: 1px solid var(--line); color: var(--muted); }
+button.tab-new .ms { font-size: 18px; }
+button.tab-new:hover { background: var(--sky); border-color: transparent; color: var(--on-accent); }
 
 /* ---------- Éditeur ---------- */
 .editor {
