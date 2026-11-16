@@ -382,3 +382,21 @@ button.tab-new:hover { background: var(--surface); box-shadow: var(--shadow-subt
 }
 #stats { white-space: pre; font-feature-settings: "tnum"; }
 #status { overflow: hidden; text-overflow: ellipsis; margin-right: 16px; }
+
+/* ---------- Barre de titre maison : boutons de fenêtre ---------- */
+.toolbar { padding-right: 10px; }
+.window-controls {
+  display: flex; gap: 2px; margin-left: 10px; padding: 3px;
+  border-radius: var(--radius-pills);
+  background: var(--surface); box-shadow: var(--shadow-subtle);
+}
+.window-controls button {
+  width: 32px; height: 32px; padding: 0; justify-content: center;
+  border-radius: var(--radius-pills); color: var(--text-muted);
+}
+.window-controls button:hover { background: var(--hover); color: var(--text); }
+.window-controls .ms { font-size: 18px; }
+#win-max .ms { font-size: 15px; }
+#win-close:hover { background: var(--papaya); color: #fff; }
+.when-max, .is-maximized .when-normal { display: none; }
+.is-maximized .when-max { display: inline; }

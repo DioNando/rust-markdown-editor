@@ -527,6 +527,19 @@ $("btn-save-as").onclick = () => saveDoc(activeDoc(), true);
 $("btn-split").onclick = toggleSplit;
 $("btn-theme").onclick = () =>
   setTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
+
+// ---------- Boutons de fenêtre (barre de titre native désactivée) ----------
+$("win-min").onclick = () => appWindow.minimize();
+$("win-max").onclick = () => appWindow.toggleMaximize();
+$("win-close").onclick = () => appWindow.close(); // passe par onCloseRequested (confirmation)
+
+async function syncMaximized() {
+  const max = await appWindow.isMaximized();
+  document.documentElement.classList.toggle("is-maximized", max);
+  $("win-max").title = $("win-max").ariaLabel = max ? "Restaurer" : "Agrandir";
+}
+appWindow.onResized(syncMaximized);
+syncMaximized();
 document.querySelectorAll(".segmented button").forEach((b) =>
   (b.onclick = () => setMode(focused, b.dataset.mode))
 );

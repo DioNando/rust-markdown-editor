@@ -8,10 +8,12 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <header class="toolbar">
-    <div class="file">
+  <!-- Barre de titre maison : data-tauri-drag-region = zone pour déplacer la fenêtre
+       (double-clic = agrandir). Seuls les éléments portant l'attribut sont « attrapables ». -->
+  <header class="toolbar" data-tauri-drag-region>
+    <div class="file" data-tauri-drag-region>
       <span class="ms logo">description</span>
-      <span id="filename">Sans titre</span>
+      <span id="filename" data-tauri-drag-region>Sans titre</span>
       <span id="dirty" class="dirty" title="Modifications non enregistrées" hidden></span>
     </div>
 
@@ -21,7 +23,7 @@
       <button data-mode="preview"><span class="ms">menu_book</span>Lire</button>
     </nav>
 
-    <div class="actions">
+    <div class="actions" data-tauri-drag-region>
       <button id="btn-split" class="btn-ghost icon" title="Fractionner la vue (Ctrl+\)">
         <span class="ms">splitscreen_right</span>
       </button>
@@ -40,6 +42,14 @@
         <span class="ms when-light">dark_mode</span>
         <span class="ms when-dark">light_mode</span>
       </button>
+      <div class="window-controls" aria-label="Fenêtre">
+        <button id="win-min" title="Réduire" aria-label="Réduire"><span class="ms">remove</span></button>
+        <button id="win-max" title="Agrandir" aria-label="Agrandir">
+          <span class="ms when-normal">crop_square</span>
+          <span class="ms when-max">filter_none</span>
+        </button>
+        <button id="win-close" title="Fermer" aria-label="Fermer"><span class="ms">close</span></button>
+      </div>
     </div>
   </header>
 

@@ -1,1 +1,1 @@
-add,check,close,dark_mode,description,edit,folder_open,light_mode,menu_book,save,save_as,splitscreen_right,upload_file,vertical_split
+add,check,close,crop_square,dark_mode,description,edit,filter_none,folder_open,light_mode,menu_book,remove,save,save_as,splitscreen_right,upload_file,vertical_split
