@@ -24,6 +24,9 @@
     </nav>
 
     <div class="actions" data-tauri-drag-region>
+      <button id="btn-outline" class="btn-ghost icon" title="Plan du document (Ctrl+Maj+O)">
+        <span class="ms">toc</span>
+      </button>
       <button id="btn-split" class="btn-ghost icon" title="Fractionner la vue (Ctrl+\)">
         <span class="ms">splitscreen_right</span>
       </button>
@@ -36,6 +39,9 @@
       </button>
       <button id="btn-save" class="btn-primary" title="Enregistrer (Ctrl+S)">
         <span class="ms">save</span><span class="lbl">Enregistrer</span>
+      </button>
+      <button id="btn-more" class="btn-ghost icon" title="Plus : rechercher, exporter, fichiers récents" aria-haspopup="menu">
+        <span class="ms">more_horiz</span>
       </button>
       <span class="sep" aria-hidden="true"></span>
       <button id="btn-theme" class="btn-ghost icon" title="Changer de thème">
@@ -54,7 +60,44 @@
   </header>
 
   <!-- Les panneaux (groupes d'onglets) sont créés par main.js à partir du modèle ci-dessous -->
-  <main class="workspace" id="workspace"></main>
+  <main class="workspace" id="workspace">
+    <aside id="outline" class="outline card" hidden>
+      <div class="outline-head"><span class="ms">toc</span>Plan</div>
+      <nav id="outline-list" class="outline-list"></nav>
+    </aside>
+  </main>
+
+  <!-- Menu « Plus » -->
+  <div id="menu" class="menu" role="menu" hidden>
+    <button data-cmd="find" role="menuitem"><span class="ms">search</span>Rechercher<kbd>Ctrl+F</kbd></button>
+    <button data-cmd="replace" role="menuitem"><span class="ms">find_replace</span>Remplacer<kbd>Ctrl+H</kbd></button>
+    <div class="menu-sep"></div>
+    <button data-cmd="export-html" role="menuitem"><span class="ms">html</span>Exporter en HTML…</button>
+    <button data-cmd="export-pdf" role="menuitem"><span class="ms">picture_as_pdf</span>Exporter en PDF…<kbd>Ctrl+P</kbd></button>
+    <div class="menu-sep"></div>
+    <div class="menu-title"><span class="ms">history</span>Fichiers récents</div>
+    <div id="recent-list" class="recent-list"></div>
+  </div>
+
+  <!-- Barre de recherche : déplacée dans le panneau actif à l'ouverture -->
+  <div id="findbar" class="findbar" hidden>
+    <div class="find-row">
+      <span class="ms">search</span>
+      <input id="find-input" placeholder="Rechercher" spellcheck="false" autocomplete="off" />
+      <span id="find-count" class="find-count"></span>
+      <button id="find-case" class="btn-ghost icon" title="Respecter la casse"><span class="ms">match_case</span></button>
+      <button id="find-prev" class="btn-ghost icon" title="Précédent (Maj+Entrée)"><span class="ms">arrow_upward</span></button>
+      <button id="find-next" class="btn-ghost icon" title="Suivant (Entrée)"><span class="ms">arrow_downward</span></button>
+      <button id="find-toggle" class="btn-ghost icon" title="Remplacer (Ctrl+H)"><span class="ms">find_replace</span></button>
+      <button id="find-close" class="btn-ghost icon" title="Fermer (Échap)"><span class="ms">close</span></button>
+    </div>
+    <div class="find-row replace-row">
+      <span class="ms">find_replace</span>
+      <input id="replace-input" placeholder="Remplacer par" spellcheck="false" autocomplete="off" />
+      <button id="replace-one" class="btn-ghost" title="Remplacer (Entrée)">Remplacer</button>
+      <button id="replace-all" class="btn-ghost" title="Tout remplacer (Ctrl+Alt+Entrée)">Tout</button>
+    </div>
+  </div>
 
   <template id="group-template">
     <section class="group">
@@ -87,17 +130,15 @@
 
   <dialog id="confirm" class="modal">
     <form method="dialog">
-      <h2 id="confirm-title">Enregistrer les modifications ?</h2>
+      <h2 id="confirm-title"></h2>
       <p id="confirm-text"></p>
-      <div class="modal-actions">
-        <button value="cancel" class="btn-ghost">Annuler</button>
-        <button value="discard" class="btn-ghost">Ne pas enregistrer</button>
-        <button value="save" class="btn-primary" autofocus>Enregistrer</button>
-      </div>
+      <div class="modal-actions" id="confirm-actions"></div>
     </form>
   </dialog>
 
+  <script src="vendor/highlight.min.js"></script>
   <script src="highlight.js"></script>
+  <script src="enhance.js"></script>
   <script src="main.js"></script>
 </body>
 </html>

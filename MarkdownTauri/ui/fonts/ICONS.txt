@@ -1,1 +1,1 @@
-add,check,close,crop_square,dark_mode,description,edit,filter_none,folder_open,light_mode,menu_book,remove,save,save_as,splitscreen_right,upload_file,vertical_split
+add,arrow_downward,arrow_upward,check,close,crop_square,dark_mode,description,edit,expand_more,filter_none,find_replace,folder_open,history,html,light_mode,match_case,menu_book,more_horiz,picture_as_pdf,refresh,remove,save,save_as,search,splitscreen_right,toc,upload_file,vertical_split
