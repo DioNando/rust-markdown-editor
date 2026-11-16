@@ -156,7 +156,7 @@ button.icon { width: 36px; padding: 0; justify-content: center; }
   font: 400 20px/1.2 var(--font-serif); letter-spacing: -0.02em; color: var(--text);
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
 }
-.dirty { flex: none; width: 8px; height: 8px; border-radius: var(--radius-pills); background: var(--papaya); }
+#dirty { flex: none; width: 8px; height: 8px; border-radius: var(--radius-pills); background: var(--papaya); }
 
 /* Sélecteur de mode : pilule blanche flottante, actif en Marigold */
 .segmented {
