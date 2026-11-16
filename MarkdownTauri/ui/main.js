@@ -518,15 +518,30 @@ appWindow.onCloseRequested(async (event) => {
 // ====================================================================
 function setTheme(theme) {
   document.documentElement.dataset.theme = theme;
-  savePref("ui-theme", theme);
+  savePref("agence-theme", theme);
+}
+
+/** Bascule animée : un cercle part du bouton et recouvre la fenêtre (View Transitions). */
+function toggleTheme(e) {
+  const next = document.documentElement.dataset.theme === "dark" ? "light" : "dark";
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!document.startViewTransition || reduce) return setTheme(next);
+  const r = e.currentTarget.getBoundingClientRect();
+  const x = r.left + r.width / 2, y = r.top + r.height / 2;
+  const radius = Math.hypot(Math.max(x, innerWidth - x), Math.max(y, innerHeight - y));
+  document.startViewTransition(() => setTheme(next)).ready.then(() => {
+    document.documentElement.animate(
+      { clipPath: [`circle(0px at ${x}px ${y}px)`, `circle(${radius}px at ${x}px ${y}px)`] },
+      { duration: 900, easing: "cubic-bezier(0.16, 1, 0.3, 1)", pseudoElement: "::view-transition-new(root)" }
+    );
+  });
 }
 
 $("btn-open").onclick = openDialog;
 $("btn-save").onclick = () => saveDoc(activeDoc(), false);
 $("btn-save-as").onclick = () => saveDoc(activeDoc(), true);
 $("btn-split").onclick = toggleSplit;
-$("btn-theme").onclick = () =>
-  setTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
+$("btn-theme").onclick = toggleTheme;
 document.querySelectorAll(".segmented button").forEach((b) =>
   (b.onclick = () => setMode(focused, b.dataset.mode))
 );
@@ -560,7 +575,8 @@ function savePref(key, value) {
 // ====================================================================
 // Démarrage
 // ====================================================================
-setTheme(loadPref("ui-theme", "light"));
+// Thème : choix mémorisé, sinon celui du système, sinon sombre (thème de référence)
+setTheme(loadPref("agence-theme", matchMedia("(prefers-color-scheme: light)").matches ? "light" : "dark"));
 const first = createGroup();
 setFocus(first);
 openInGroup(createDoc(WELCOME, null, { pristine: true }), first);

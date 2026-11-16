@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="fr" data-theme="light">
+<html lang="fr" data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -10,7 +10,7 @@
 <body>
   <header class="toolbar">
     <div class="file">
-      <span class="ms logo">description</span>
+      <span class="logo" aria-hidden="true"></span>
       <span id="filename">Sans titre</span>
       <span id="dirty" class="dirty" title="Modifications non enregistrées" hidden></span>
     </div>
@@ -32,8 +32,8 @@
       <button id="btn-save-as" class="btn-ghost icon" title="Enregistrer sous (Ctrl+Maj+S)">
         <span class="ms">save_as</span>
       </button>
-      <button id="btn-save" class="btn-primary" title="Enregistrer (Ctrl+S)">
-        <span class="ms">save</span>Enregistrer
+      <button id="btn-save" class="btn-pill" title="Enregistrer (Ctrl+S)">
+        <span class="dot"><span class="ms" aria-hidden="true">save</span></span>Enregistrer
       </button>
       <span class="sep"></span>
       <button id="btn-theme" class="btn-ghost icon" title="Changer de thème">
