@@ -543,10 +543,13 @@ button.tab-new:hover { background: var(--surface); box-shadow: var(--shadow-subt
   display: flex; align-items: center; gap: 8px; padding: 0 10px 12px;
   font: 400 20px/1.2 var(--font-serif); letter-spacing: -0.02em; color: var(--text);
 }
-.outline-head .ms {
+.outline-head .outline-icon {
   display: grid; place-items: center; width: 28px; height: 28px; border-radius: 9px;
   background: var(--mint); color: var(--color-ink); font-size: 17px; rotate: -4deg;
 }
+#outline-close { margin-left: auto; width: 28px; height: 28px; color: var(--text-muted); border-radius: var(--radius-pills); }
+#outline-close .ms { font-size: 17px; }
+#outline-close:hover { color: var(--text); }
 .outline-list { overflow-y: auto; min-height: 0; display: flex; flex-direction: column; gap: 1px; }
 button.outline-item {
   display: block; flex: none; width: 100%; height: auto; min-height: 30px;

@@ -1500,6 +1500,10 @@ $("btn-save").onclick = () => saveDoc(activeDoc(), false);
 $("btn-save-as").onclick = () => saveDoc(activeDoc(), true);
 $("btn-split").onclick = toggleSplit;
 $("btn-outline").onclick = () => setOutline(outlineEl.hidden);
+$("outline-close").onclick = () => {
+  setOutline(false);
+  focused?.editor.focus({ preventScroll: true });
+};
 $("btn-theme").onclick = () => setTheme(theme() === "dark" ? "light" : "dark");
 
 // ---------- Liens de l'aperçu : navigateur par défaut, ou onglet pour un .md local ----------
