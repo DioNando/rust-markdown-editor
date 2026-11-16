@@ -96,9 +96,52 @@ async fn save_file(
     Ok(Some(target.display().to_string()))
 }
 
+/// N'autorise que les liens web et e-mail à sortir vers le système.
+fn is_external(url: &str) -> bool {
+    let lower = url.trim_start().to_ascii_lowercase();
+    lower.starts_with("https://") || lower.starts_with("http://") || lower.starts_with("mailto:")
+}
+
+/// Ouvre un lien de l'aperçu dans le navigateur (ou le client mail) par défaut.
+#[tauri::command]
+fn open_external(url: String) -> Result<(), String> {
+    if !is_external(&url) {
+        return Err(format!("Lien non pris en charge : {url}"));
+    }
+    tauri_plugin_opener::open_url(url, None::<&str>).map_err(|e| e.to_string())
+}
+
+/// Garde-fou : la fenêtre ne doit jamais quitter la page de l'application.
+/// Sinon un clic sur un lien remplacerait l'interface (et ses onglets non
+/// enregistrés) par un site web. Les liens externes partent vers le navigateur.
+fn navigation_guard<R: tauri::Runtime>() -> tauri::plugin::TauriPlugin<R> {
+    tauri::plugin::Builder::new("navigation-guard")
+        .on_navigation(|_webview, url| {
+            let is_app = matches!(url.host_str(), Some("tauri.localhost") | Some("localhost"))
+                || url.scheme() == "tauri";
+            let same_page = matches!(url.path(), "/" | "/index.html");
+            if is_app && same_page {
+                return true; // chargement initial, ancres #note
+            }
+            // Lien relatif (autre.md) : il pointerait vers l'app elle-même, on le bloque simplement
+            if !is_app && is_external(url.as_str()) {
+                let _ = tauri_plugin_opener::open_url(url.as_str(), None::<&str>);
+            }
+            false
+        })
+        .build()
+}
+
 fn main() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![render_markdown, open_file, read_file, save_file])
+        .plugin(navigation_guard())
+        .invoke_handler(tauri::generate_handler![
+            render_markdown,
+            open_file,
+            read_file,
+            save_file,
+            open_external
+        ])
         .run(tauri::generate_context!())
         .expect("erreur au lancement de l'application");
 }

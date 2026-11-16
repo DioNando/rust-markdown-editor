@@ -551,6 +551,38 @@ $("btn-split").onclick = toggleSplit;
 $("btn-theme").onclick = () =>
   setTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
 
+// ---------- Liens de l'aperçu : navigateur par défaut, jamais dans la fenêtre ----------
+workspace.addEventListener("click", (e) => {
+  const a = e.target.closest(".markdown a[href]");
+  if (!a) return;
+  const href = a.getAttribute("href");
+  if (href.startsWith("#")) return; // ancre interne (notes de bas de page) : comportement normal
+  e.preventDefault();
+  if (/^(https?:|mailto:)/i.test(href)) {
+    invoke("open_external", { url: href })
+      .then(() => status(`Ouvert dans le navigateur : ${href}`))
+      .catch((err) => status(String(err)));
+  } else {
+    status(`Lien local non pris en charge : ${href}`);
+  }
+});
+
+// ---------- Pas de rechargement ni de « page précédente » (perte des onglets) ----------
+window.addEventListener("keydown", (e) => {
+  const k = e.key.toLowerCase();
+  const reload = k === "f5" || (e.ctrlKey && k === "r");
+  const back = e.altKey && (k === "arrowleft" || k === "arrowright");
+  if (reload || back || k === "browserback" || k === "browserforward") e.preventDefault();
+}, true);
+// Boutons « précédent / suivant » de la souris
+window.addEventListener("mouseup", (e) => { if (e.button === 3 || e.button === 4) e.preventDefault(); });
+// Menu contextuel du navigateur (Précédent, Actualiser…) : seulement là où il sert (copier / coller)
+window.addEventListener("contextmenu", (e) => {
+  const editable = e.target.closest("textarea, input, [contenteditable]");
+  const hasSelection = String(window.getSelection()).length > 0;
+  if (!editable && !hasSelection) e.preventDefault();
+});
+
 // ---------- Boutons de fenêtre (barre de titre native désactivée) ----------
 $("win-min").onclick = () => appWindow.minimize();
 $("win-max").onclick = () => appWindow.toggleMaximize();
