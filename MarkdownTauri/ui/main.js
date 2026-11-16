@@ -72,6 +72,8 @@ function createGroup(mode = loadPref("mode", "split")) {
     tabsEl: el.querySelector(".tabs"),
     body: el.querySelector(".group-body"),
     editor: el.querySelector(".editor"),
+    hl: el.querySelector(".highlight"),
+    hlCode: el.querySelector(".highlight code"),
     previewPane: el.querySelector(".preview-pane"),
     preview: el.querySelector(".markdown"),
     tabs: [],
@@ -122,13 +124,25 @@ function saveView(g) {
   });
 }
 
+// ---------- Coloration syntaxique (calque <pre> sous le textarea) ----------
+function paint(g) {
+  g.hlCode.innerHTML = window.highlightMarkdown(g.editor.value);
+  syncLayer(g);
+}
+function syncLayer(g) {
+  g.hl.scrollTop = g.editor.scrollTop;
+  g.hl.scrollLeft = g.editor.scrollLeft;
+}
+
 function loadView(g) {
   const doc = activeDoc(g);
   if (!doc) return;
   g.editor.value = doc.text;
+  paint(g);
   const v = g.views.get(doc.id) || { scroll: 0, selStart: 0, selEnd: 0, previewScroll: 0 };
   g.editor.setSelectionRange(v.selStart, v.selEnd);
   g.editor.scrollTop = v.scroll;
+  syncLayer(g);
   showPreview(g, v.previewScroll);
 }
 
@@ -418,6 +432,7 @@ function wireGroup(g) {
     doc.text = g.editor.value;
     doc.version++;
     doc.pristine = false;
+    paint(g);
     // Même document affiché dans l'autre panneau : on le garde synchronisé
     for (const other of groupsShowing(doc)) {
       if (other === g) continue;
@@ -425,6 +440,7 @@ function wireGroup(g) {
       other.editor.value = doc.text;
       other.editor.setSelectionRange(s, e);
       other.editor.scrollTop = scrollTop;
+      paint(other);
     }
     scheduleRender(doc);
     if (wasDirty !== isDirty(doc)) renderAllTabs();
@@ -440,7 +456,14 @@ function wireGroup(g) {
   });
 
   // Défilement synchronisé éditeur → aperçu
+  // Le calque coloré suit la largeur utile du textarea (sans sa barre de défilement)
+  new ResizeObserver(() => {
+    g.hl.style.width = g.editor.clientWidth + "px";
+    syncLayer(g);
+  }).observe(g.editor);
+
   g.editor.addEventListener("scroll", () => {
+    syncLayer(g);
     const ratio = g.editor.scrollTop / Math.max(1, g.editor.scrollHeight - g.editor.clientHeight);
     g.previewPane.scrollTop = ratio * (g.previewPane.scrollHeight - g.previewPane.clientHeight);
   }, { passive: true });

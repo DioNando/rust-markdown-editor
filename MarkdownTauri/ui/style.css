@@ -243,18 +243,87 @@ button.tab-close {
 button.tab-new { width: 32px; height: 32px; aspect-ratio: 1; padding: 0; flex: none; color: var(--text-muted); border-radius: var(--radius-pills); }
 button.tab-new:hover { background: var(--surface); box-shadow: var(--shadow-subtle); }
 
-/* ---------- Éditeur ---------- */
-.editor {
-  flex: 1; resize: none; border: 0; outline: 0;
+/* ---------- Éditeur avec coloration syntaxique ----------
+   Le textarea (texte transparent, seul le curseur se voit) est posé exactement
+   au-dessus d'un <pre> coloré. Les deux doivent avoir STRICTEMENT la même typo,
+   les mêmes marges et le même retour à la ligne, sinon le calque se décale. */
+.editor-pane { position: relative; }
+.editor, .highlight {
+  margin: 0; border: 0;
   padding: 32px 36px 40vh;
-  background: transparent; color: var(--text);
-  font: 13.5px/1.7 var(--font-mono);
+  font: 400 13.5px/1.7 var(--font-mono);
   font-variant-ligatures: none; /* sinon Cascadia transforme |---| en traits continus */
-  letter-spacing: 0;
+  font-feature-settings: normal;
+  letter-spacing: 0; word-spacing: 0;
   tab-size: 4;
+  white-space: pre-wrap; overflow-wrap: break-word; word-break: normal;
+}
+.editor {
+  position: relative; z-index: 1;
+  flex: 1; resize: none; outline: 0;
+  background: transparent;
+  color: transparent; caret-color: var(--text);
   user-select: text;
 }
 .editor::placeholder { color: var(--text-faint); }
+.editor::selection { color: transparent; }
+.highlight {
+  position: absolute; left: 0; top: 0; z-index: 0;
+  height: 100%; overflow: hidden; pointer-events: none;
+  color: var(--text);
+}
+.highlight code { font: inherit; }
+
+/* Couleurs syntaxiques (palette Craft, assombrie pour rester lisible sur blanc) */
+:root {
+  --syn-punct: #b5afa9;            /* ** ` > | … : la syntaxe s'efface */
+  --syn-heading-mark: #ff4500;     /* Papaya */
+  --syn-heading: var(--color-ink);
+  --syn-italic: var(--color-graphite);
+  --syn-code: #2f7d4b;             /* Mint foncé */
+  --syn-code-bg: rgb(155 216 169 / 0.22);
+  --syn-link: #0087ff;             /* Azure */
+  --syn-url: #7a8cc9;              /* Periwinkle foncé */
+  --syn-quote: #4a5fb8;
+  --syn-list: #ff4500;
+  --syn-task: #0087ff;
+  --syn-hl-bg: rgb(253 233 155 / 0.7); /* Marigold */
+  --syn-html: #9a6a1f;
+}
+[data-theme="dark"] {
+  --syn-punct: #6f6963;
+  --syn-heading-mark: #ff7a45;
+  --syn-heading: #ffffff;
+  --syn-italic: #d6cfc7;
+  --syn-code: #9bd8a9;
+  --syn-code-bg: rgb(155 216 169 / 0.10);
+  --syn-link: #5fb0ff;
+  --syn-url: #8e9fd6;
+  --syn-quote: #b8caf5;
+  --syn-list: #ff7a45;
+  --syn-task: #5fb0ff;
+  --syn-hl-bg: rgb(253 233 155 / 0.22);
+  --syn-html: #fde99b;
+}
+/* Couleurs et fonds uniquement : graisse et style changeraient la largeur des caractères */
+.highlight .t-punct { color: var(--syn-punct); }
+.highlight .t-hmark { color: var(--syn-heading-mark); }
+.highlight .t-heading { color: var(--syn-heading); text-shadow: 0.35px 0 0 currentColor; } /* faux gras, sans décaler */
+.highlight .t-bold { color: var(--syn-heading); text-shadow: 0.35px 0 0 currentColor; }
+.highlight .t-italic { color: var(--syn-italic); }
+.highlight .t-strike { text-decoration: line-through; text-decoration-color: var(--syn-punct); color: var(--text-muted); }
+.highlight .t-code { color: var(--syn-code); background: var(--syn-code-bg); border-radius: 4px; }
+.highlight .t-codeblock { color: var(--syn-code); }
+.highlight .t-fence { color: var(--syn-punct); }
+.highlight .t-lang { color: var(--syn-code); }
+.highlight .t-link { color: var(--syn-link); }
+.highlight .t-url { color: var(--syn-url); }
+.highlight .t-quote { color: var(--syn-quote); }
+.highlight .t-list { color: var(--syn-list); }
+.highlight .t-task { color: var(--syn-task); }
+.highlight .t-hr { color: var(--syn-punct); }
+.highlight .t-mark { background: var(--syn-hl-bg); border-radius: 4px; }
+.highlight .t-html { color: var(--syn-html); }
 ::selection { background: color-mix(in srgb, var(--color-marigold) 75%, transparent); color: var(--color-ink); }
 
 ::-webkit-scrollbar { width: 12px; height: 12px; }

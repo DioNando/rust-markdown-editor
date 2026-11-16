@@ -63,7 +63,10 @@
         <button class="tab-new btn-ghost icon" title="Nouvel onglet (Ctrl+T)"><span class="ms">add</span></button>
       </div>
       <div class="group-body" data-mode="split">
-        <div class="card editor-pane"><textarea class="editor" spellcheck="false"></textarea></div>
+        <div class="card editor-pane">
+          <pre class="highlight" aria-hidden="true"><code></code></pre>
+          <textarea class="editor" spellcheck="false"></textarea>
+        </div>
         <div class="divider" title="Glisser pour redimensionner"></div>
         <div class="card preview-pane"><article class="markdown"></article></div>
       </div>
@@ -94,6 +97,7 @@
     </form>
   </dialog>
 
+  <script src="highlight.js"></script>
   <script src="main.js"></script>
 </body>
 </html>
