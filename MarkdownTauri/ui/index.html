@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="fr" data-theme="light">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Éditeur Markdown</title>
+  <link rel="stylesheet" href="fonts.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="toolbar">
+    <div class="file">
+      <span class="ms logo">description</span>
+      <span id="filename">Sans titre</span>
+      <span id="dirty" class="dirty" title="Modifications non enregistrées" hidden></span>
+    </div>
+
+    <nav class="segmented" aria-label="Mode d'affichage du panneau actif">
+      <button data-mode="edit"><span class="ms">edit</span>Éditer</button>
+      <button data-mode="split"><span class="ms">vertical_split</span>Côte à côte</button>
+      <button data-mode="preview"><span class="ms">menu_book</span>Lire</button>
+    </nav>
+
+    <div class="actions">
+      <button id="btn-split" class="btn-ghost icon" title="Fractionner la vue (Ctrl+\)">
+        <span class="ms">splitscreen_right</span>
+      </button>
+      <span class="sep"></span>
+      <button id="btn-open" class="btn-ghost" title="Ouvrir (Ctrl+O)">
+        <span class="ms">folder_open</span>Ouvrir
+      </button>
+      <button id="btn-save-as" class="btn-ghost icon" title="Enregistrer sous (Ctrl+Maj+S)">
+        <span class="ms">save_as</span>
+      </button>
+      <button id="btn-save" class="btn-primary" title="Enregistrer (Ctrl+S)">
+        <span class="ms">save</span>Enregistrer
+      </button>
+      <span class="sep"></span>
+      <button id="btn-theme" class="btn-ghost icon" title="Changer de thème">
+        <span class="ms when-light">dark_mode</span>
+        <span class="ms when-dark">light_mode</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- Les panneaux (groupes d'onglets) sont créés par main.js à partir du modèle ci-dessous -->
+  <main class="workspace" id="workspace"></main>
+
+  <template id="group-template">
+    <section class="group">
+      <div class="tabstrip">
+        <div class="tabs" role="tablist"></div>
+        <button class="tab-new btn-ghost icon" title="Nouvel onglet (Ctrl+T)"><span class="ms">add</span></button>
+      </div>
+      <div class="group-body" data-mode="split">
+        <div class="card editor-pane"><textarea class="editor" spellcheck="false"></textarea></div>
+        <div class="divider" title="Glisser pour redimensionner"></div>
+        <div class="card preview-pane"><article class="markdown"></article></div>
+      </div>
+      <div class="drop-zone">
+        <div class="drop-card">
+          <span class="ms">upload_file</span>
+          <strong>Déposer pour ouvrir</strong>
+          <span>Fichiers .md, .markdown ou .txt</span>
+        </div>
+      </div>
+    </section>
+  </template>
+
+  <footer class="statusbar">
+    <span id="status">Prêt — glisse un fichier .md sur la fenêtre pour l'ouvrir</span>
+    <span id="stats"></span>
+  </footer>
+
+  <dialog id="confirm" class="modal">
+    <form method="dialog">
+      <h2 id="confirm-title">Enregistrer les modifications ?</h2>
+      <p id="confirm-text"></p>
+      <div class="modal-actions">
+        <button value="cancel" class="btn-ghost">Annuler</button>
+        <button value="discard" class="btn-ghost">Ne pas enregistrer</button>
+        <button value="save" class="btn-primary" autofocus>Enregistrer</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="main.js"></script>
+</body>
+</html>

@@ -1,0 +1,10 @@
+# Fichiers de compilation Rust
+target/
+
+# Schémas générés par tauri-build
+MarkdownTauri/gen/
+
+# Divers
+.DS_Store
+Thumbs.db
+*.swp
