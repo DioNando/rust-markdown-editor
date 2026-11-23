@@ -167,7 +167,7 @@ button.icon { width: 38px; padding: 0; }
   border-radius: 9px; background: var(--color-canvas); color: var(--color-accent);
   box-shadow: var(--shadow-tile);
 }
-.file .logo svg { width: 20px; height: 20px; }
+.file .logo svg { width: 24px; height: 24px; }
 #filename {
   font: 600 20px/1.1 var(--font-sans); letter-spacing: -0.04em; color: var(--on-sky);
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
