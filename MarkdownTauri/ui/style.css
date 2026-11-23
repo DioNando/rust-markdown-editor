@@ -161,13 +161,12 @@ button.icon { width: 38px; padding: 0; }
   color: var(--on-sky);
 }
 .file { display: flex; align-items: center; gap: 12px; min-width: 0; }
-/* Logo : petit carreau blanc en relief, glyphe bleu roi */
+/* Logo : la plume seule, sans fond, en blanc sur le ciel */
 .file .logo {
-  display: grid; place-items: center; width: 36px; height: 36px; flex: none;
-  border-radius: 9px; background: var(--color-canvas); color: var(--color-accent);
-  box-shadow: var(--shadow-tile);
+  display: grid; place-items: center; width: 30px; height: 30px; flex: none;
+  color: var(--on-sky);
 }
-.file .logo svg { width: 24px; height: 24px; }
+.file .logo svg { width: 26px; height: 26px; }
 #filename {
   font: 600 20px/1.1 var(--font-sans); letter-spacing: -0.04em; color: var(--on-sky);
   white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
