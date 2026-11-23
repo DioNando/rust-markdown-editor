@@ -1,6 +1,6 @@
 /* Style d'après DESIGN-Letters.md : « cloudborne everyday tools ».
-   Une page blanche qui s'ouvre sur le ciel : scène bleu poudré (dégradé #779bc1 → #cbdfec)
-   entourée d'un liseré blanc de 12 px, coins de 28 px en haut et 48 px en bas. Les panneaux
+   Une fenêtre ouverte sur le ciel : scène bleu poudré (dégradé #779bc1 → #cbdfec) qui
+   remplit toute la fenêtre. Les panneaux
    sont des feuilles blanches flottantes à grands rayons, posées sur une brume bleutée.
    Sans arrondie (Nunito Sans, substitut d'Open Runde), titres serrés (-0,04 em), actions
    en pastilles (blanches sur le ciel, noires sur le contenu), bleu vif réservé aux détails,
@@ -62,7 +62,6 @@
   --font-mono: "Cascadia Code", "Cascadia Mono", Consolas, monospace;
 
   /* Formes */
-  --radius-stage: 28px 28px 48px 48px;
   --radius-panel: 32px;
   --radius-cards: 32px;
   --radius-ui: 18px;
@@ -117,16 +116,16 @@ body {
   overflow: hidden;
   user-select: none;
 }
-/* Scène de ciel : liseré blanc de 12 px, coins de 28 px en haut et 48 px en bas */
+/* Scène de ciel : elle remplit toute la fenêtre (sans le liseré blanc de la référence) */
 body::before {
   content: ""; position: fixed; z-index: 0; pointer-events: none;
-  inset: 12px; border-radius: var(--radius-stage);
+  inset: 0;
   background: var(--sky);
 }
 /* Poussière de lumière : quelques points blancs épars dans le haut du ciel */
 body::after {
   content: ""; position: fixed; z-index: 0; pointer-events: none;
-  inset: 12px; border-radius: var(--radius-stage);
+  inset: 0;
   background-image:
     radial-gradient(1.5px 1.5px at 12% 18%, #fff 50%, transparent 51%),
     radial-gradient(1px 1px at 27% 9%, #fff 50%, transparent 51%),
