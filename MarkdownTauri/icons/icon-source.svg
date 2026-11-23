@@ -1,16 +1,15 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
   <defs>
-    <linearGradient id="seam" x1="0" y1="1" x2="1" y2="0">
-      <stop offset="0" stop-color="#219ff8"/><stop offset="0.6" stop-color="#847dff"/>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#16233f"/><stop offset="0.58" stop-color="#263a68"/><stop offset="1" stop-color="#3d5794"/>
     </linearGradient>
-    <filter id="blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="70"/></filter>
-    <clipPath id="tile"><rect x="32" y="32" width="960" height="960" rx="216"/></clipPath>
+    <radialGradient id="sheen" cx="0.5" cy="0" r="0.75">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.16"/><stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
   </defs>
-  <g clip-path="url(#tile)">
-    <rect x="32" y="32" width="960" height="960" fill="#050505"/>
-    <ellipse cx="512" cy="1060" rx="520" ry="220" fill="url(#seam)" opacity="0.75" filter="url(#blur)"/>
-  </g>
-  <rect x="32.5" y="32.5" width="959" height="959" rx="215.5" fill="none" stroke="#ffffff" stroke-opacity="0.1" stroke-width="2"/>
+  <rect x="32" y="32" width="960" height="960" rx="216" fill="url(#sky)"/>
+  <rect x="32" y="32" width="960" height="960" rx="216" fill="url(#sheen)"/>
+  <rect x="33" y="33" width="958" height="958" rx="215" fill="none" stroke="#ffffff" stroke-opacity="0.14" stroke-width="2"/>
   <g transform="translate(240 240) scale(2.125)" fill="#ffffff">
     <path d="m0,59.08h0s19.69,0,19.69,0h0c0-21.75,17.63-39.38,39.38-39.38h0V0h0C26.45,0,0,26.45,0,59.08Z"/>
     <path d="m59.08,0v19.69h-.31V0h.31Zm196.92,196.92v.31h-19.69v-.31h19.69Z"/>
