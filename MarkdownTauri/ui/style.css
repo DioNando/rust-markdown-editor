@@ -148,6 +148,7 @@ body::after {
   letter-spacing: normal; text-transform: none; white-space: nowrap; direction: ltr;
   font-feature-settings: "liga";
   font-variation-settings: "FILL" 0, "wght" 450, "opsz" 20;
+  transition: font-variation-settings var(--ease);
 }
 [data-theme="light"] .when-dark, [data-theme="dark"] .when-light { display: none; }
 
@@ -163,6 +164,8 @@ button {
 }
 button:focus-visible { outline: 2px solid var(--color-accent); outline-offset: 2px; }
 button .ms { font-size: 20px; }
+/* Survol : l'icône se remplit (trait → plein), en douceur */
+button:hover .ms { font-variation-settings: "FILL" 1, "wght" 450, "opsz" 20; }
 
 .btn-primary { background: var(--primary); color: var(--on-primary); box-shadow: var(--shadow-action); }
 .btn-primary:hover { opacity: 0.88; }
@@ -210,6 +213,9 @@ button.icon { width: 38px; padding: 0; }
 .toolbar .btn-primary { background: var(--sky-pill); color: var(--on-sky-pill); }
 .sep { width: 1px; height: 18px; background: rgb(255 255 255 / 0.35); margin: 0 6px; }
 #btn-split.on { background: var(--sky-hover); }
+/* États actifs : icône pleine */
+.segmented button.active .ms, #btn-split.on .ms, #btn-outline.on .ms, #btn-more.on .ms,
+.group.focused .tab.active .tab-icon { font-variation-settings: "FILL" 1, "wght" 450, "opsz" 20; }
 
 /* ---------- Zone de travail : feuilles blanches flottantes ---------- */
 .workspace { display: flex; gap: 16px; min-height: 0; padding: 0 16px; }
