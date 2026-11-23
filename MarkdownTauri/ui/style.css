@@ -1,17 +1,17 @@
 /* Style d'après DESIGN-Letters.md : « cloudborne everyday tools ».
-   Une fenêtre ouverte sur le ciel : scène bleu poudré (dégradé #779bc1 → #cbdfec) qui
+   Une fenêtre ouverte sur une scène sauge (dégradé #7da596 → #d7e9e1) qui
    remplit toute la fenêtre. Les panneaux
-   sont des feuilles blanches flottantes à grands rayons, posées sur une brume bleutée.
+   sont des feuilles blanches flottantes à grands rayons, posées sur une brume verdâtre.
    Sans arrondie (Nunito Sans, substitut d'Open Runde), titres serrés (-0,04 em), actions
-   en pastilles (blanches sur le ciel, noires sur le contenu), bleu vif réservé aux détails,
+   en pastilles (blanches sur le ciel, noires sur le contenu), émeraude réservé aux détails,
    petits carreaux blancs en relief comme ponctuation. */
 
 :root {
   /* Couleurs (tokens DESIGN-Letters.md) */
-  --color-sky-top: #779bc1;
-  --color-sky-middle: #9abfda;
-  --color-sky-bottom: #cbdfec;
-  --color-accent: #2597d0;
+  --color-sky-top: #7da596;
+  --color-sky-middle: #a7c8bb;
+  --color-sky-bottom: #d7e9e1;
+  --color-accent: #1f9a72;
   --color-ink: #070709;
   --color-heading-ink: #151515;
   --color-body: #60606c;
@@ -50,9 +50,9 @@
   --danger: #e0483e;
 
   --shadow-action: 0 1px 2px rgb(36 36 40 / 0.1), 0 3px 3px rgb(36 36 40 / 0.09), 0 6px 4px rgb(36 36 40 / 0.05), 0 11px 4px rgb(36 36 40 / 0.01);
-  --shadow-float: 0 17px 37px rgb(16 55 132 / 0.06), 0 67px 67px rgb(16 55 132 / 0.05), 0 2px 6px rgb(16 55 132 / 0.05);
-  --shadow-tile: 0 7px 7px rgb(22 106 196 / 0.1), 0 1px 2px rgb(22 106 196 / 0.06);
-  --shadow-pop: 0 7px 7px rgb(22 106 196 / 0.08), 0 17px 37px rgb(16 55 132 / 0.12), 0 0 0 1px var(--color-edge);
+  --shadow-float: 0 17px 37px rgb(28 70 56 / 0.06), 0 67px 67px rgb(28 70 56 / 0.05), 0 2px 6px rgb(28 70 56 / 0.05);
+  --shadow-tile: 0 7px 7px rgb(24 96 72 / 0.1), 0 1px 2px rgb(24 96 72 / 0.06);
+  --shadow-pop: 0 7px 7px rgb(24 96 72 / 0.08), 0 17px 37px rgb(28 70 56 / 0.12), 0 0 0 1px var(--color-edge);
   --shadow-card: var(--shadow-float);
 
   /* Typo */
@@ -71,15 +71,15 @@
   color-scheme: light;
 }
 
-/* Thème sombre : un ciel de crépuscule gris-bleu (pas un bleu marine technologique),
+/* Thème sombre : une sauge de nuit, vert forêt grisé,
    feuilles anthracite, pastille blanche */
 [data-theme="dark"] {
-  --canvas: #101114;
-  --sky: linear-gradient(#2f3d50 0%, #3b4e64 58%, #4a5d72 100%);
-  --surface: #1b1d22;
-  --surface-solid: #1f2126;
-  --surface-2: #272a31;
-  --surface-3: #22252b;
+  --canvas: #101312;
+  --sky: linear-gradient(#23302c 0%, #2f3f39 58%, #3d4f48 100%);
+  --surface: #1a1e1c;
+  --surface-solid: #1e2220;
+  --surface-2: #262b28;
+  --surface-3: #212623;
   --edge: rgb(255 255 255 / 0.06);
   --rule: rgb(255 255 255 / 0.09);
   --hover: rgb(255 255 255 / 0.07);
@@ -91,7 +91,7 @@
   --primary: var(--color-canvas);
   --on-primary: var(--color-ink);
   --status-text: rgb(255 255 255 / 0.7);
-  --dirty: #5cc0f0;
+  --dirty: #4fd1a5;
   --shadow-action: 0 1px 2px rgb(0 0 0 / 0.3), 0 3px 3px rgb(0 0 0 / 0.2);
   --shadow-float: 0 17px 37px rgb(0 0 0 / 0.25), 0 2px 6px rgb(0 0 0 / 0.2);
   --shadow-tile: 0 7px 7px rgb(0 0 0 / 0.25);
@@ -161,7 +161,7 @@ button.icon { width: 38px; padding: 0; }
   color: var(--on-sky);
 }
 .file { display: flex; align-items: center; gap: 12px; min-width: 0; }
-/* Logo : petit carreau blanc en relief, glyphe bleu */
+/* Logo : petit carreau blanc en relief, glyphe émeraude */
 .file .logo {
   display: grid; place-items: center; width: 36px; height: 36px; flex: none;
   border-radius: 9px; background: var(--color-canvas); color: var(--color-accent);
@@ -293,35 +293,35 @@ button.tab-new:hover { background: var(--sky-hover); }
 }
 .highlight code { font: inherit; }
 
-/* Couleurs syntaxiques : bleu vif pour les marques, gris froids, quelques nuances fraîches */
+/* Couleurs syntaxiques : émeraude pour les marques, gris froids, quelques nuances fraîches */
 :root {
   --syn-punct: #b4b8c2;
-  --syn-heading-mark: #2597d0;
+  --syn-heading-mark: #1f9a72;
   --syn-heading: #070709;
   --syn-italic: #4a4a55;
-  --syn-code: #1d7f86;
-  --syn-code-bg: rgb(37 151 208 / 0.08);
-  --syn-link: #2597d0;
-  --syn-url: #8ea3bb;
+  --syn-code: #7a5aa8;
+  --syn-code-bg: rgb(122 90 168 / 0.08);
+  --syn-link: #1f9a72;
+  --syn-url: #8aa89c;
   --syn-quote: #60606c;
-  --syn-list: #2597d0;
-  --syn-task: #2597d0;
-  --syn-hl-bg: rgb(37 151 208 / 0.18);
+  --syn-list: #1f9a72;
+  --syn-task: #1f9a72;
+  --syn-hl-bg: rgb(31 154 114 / 0.18);
   --syn-html: #7a63b8;
 }
 [data-theme="dark"] {
   --syn-punct: #5b606b;
-  --syn-heading-mark: #5cc0f0;
+  --syn-heading-mark: #4fd1a5;
   --syn-heading: #ffffff;
   --syn-italic: #c9ccd4;
-  --syn-code: #7fd4d9;
-  --syn-code-bg: rgb(92 192 240 / 0.1);
-  --syn-link: #5cc0f0;
-  --syn-url: #8a9cb3;
+  --syn-code: #c4a6f0;
+  --syn-code-bg: rgb(196 166 240 / 0.1);
+  --syn-link: #4fd1a5;
+  --syn-url: #8aa89c;
   --syn-quote: #a5a9b5;
-  --syn-list: #5cc0f0;
-  --syn-task: #5cc0f0;
-  --syn-hl-bg: rgb(92 192 240 / 0.22);
+  --syn-list: #4fd1a5;
+  --syn-task: #4fd1a5;
+  --syn-hl-bg: rgb(79 209 165 / 0.22);
   --syn-html: #b9a5ef;
 }
 /* Couleurs et fonds uniquement : graisse et style changeraient la largeur des caractères */
@@ -343,7 +343,7 @@ button.tab-new:hover { background: var(--sky-hover); }
 .highlight .t-hr { color: var(--syn-punct); }
 .highlight .t-mark { background: var(--syn-hl-bg); border-radius: 4px; }
 .highlight .t-html { color: var(--syn-html); }
-::selection { background: rgb(37 151 208 / 0.22); color: var(--text); }
+::selection { background: rgb(31 154 114 / 0.22); color: var(--text); }
 
 ::-webkit-scrollbar { width: 14px; height: 14px; }
 ::-webkit-scrollbar-thumb { background: var(--rule); border-radius: 14px; border: 5px solid transparent; background-clip: padding-box; }
@@ -378,7 +378,7 @@ button.tab-new:hover { background: var(--sky-hover); }
 .markdown ul > li::marker { color: var(--color-accent); }
 .markdown ol > li::marker { color: var(--text-heading); font-weight: 600; }
 
-/* Cases à cocher : rondes, bleu vif une fois cochées */
+/* Cases à cocher : rondes, émeraude une fois cochées */
 .markdown li:has(> input[type="checkbox"]) { list-style: none; margin-left: -1.5em; }
 .markdown input[type="checkbox"] {
   appearance: none; display: inline-grid; place-content: center;
@@ -432,7 +432,7 @@ button.tab-new:hover { background: var(--sky-hover); }
 .markdown img { max-width: 100%; border-radius: var(--radius-ui); }
 .markdown mark { background: var(--syn-hl-bg); color: var(--text-heading); padding: 0 .3em; border-radius: 4px; }
 
-/* ---------- Glisser-déposer : une île de ciel ---------- */
+/* ---------- Glisser-déposer : une île de sauge ---------- */
 .drop-zone {
   position: absolute; inset: 52px 0 0; z-index: 5;
   display: grid; place-items: center; overflow: hidden;
@@ -462,7 +462,7 @@ button.tab-new:hover { background: var(--sky-hover); }
   background: var(--surface-solid); color: var(--text);
   box-shadow: var(--shadow-pop);
 }
-.modal::backdrop { background: rgb(119 155 193 / 0.35); backdrop-filter: blur(6px); }
+.modal::backdrop { background: rgb(125 165 150 / 0.35); backdrop-filter: blur(6px); }
 .modal[open] { animation: pop 220ms ease; }
 @keyframes pop { from { opacity: 0; transform: translateY(8px) scale(0.98); } }
 .modal h2 { margin: 0 0 10px; font: 600 30px/1.1 var(--font-sans); letter-spacing: -0.04em; color: var(--text-heading); }
@@ -652,23 +652,23 @@ button.outline-item.active { background: var(--surface-2); color: var(--text-hea
 .replace-row button:not(.icon):hover { background: var(--rule); }
 .replace-row button + button { margin-left: 4px; }
 /* Résultats surlignés dans le calque coloré (CSS Custom Highlight API) */
-::highlight(find-match) { background-color: rgb(37 151 208 / 0.2); }
-::highlight(find-current) { background-color: rgb(37 151 208 / 0.75); color: #fff; }
-[data-theme="dark"] ::highlight(find-match) { background-color: rgb(92 192 240 / 0.25); }
-[data-theme="dark"] ::highlight(find-current) { background-color: rgb(92 192 240 / 0.75); color: #070709; }
+::highlight(find-match) { background-color: rgb(31 154 114 / 0.2); }
+::highlight(find-current) { background-color: rgb(31 154 114 / 0.75); color: #fff; }
+[data-theme="dark"] ::highlight(find-match) { background-color: rgb(79 209 165 / 0.25); }
+[data-theme="dark"] ::highlight(find-current) { background-color: rgb(79 209 165 / 0.75); color: #070709; }
 
 /* =====================================================================
    Aperçu : code coloré (highlight.js), formules, schémas
    ===================================================================== */
 :root {
-  --code-keyword: #2a7fc0; --code-string: #1d7f86; --code-number: #b86a1c;
-  --code-comment: #9aa0ab; --code-title: #5a4fb8; --code-type: #a04a8a;
-  --code-attr: #2597d0; --code-meta: #7a6a50;
+  --code-keyword: #1f8a68; --code-string: #7a5aa8; --code-number: #b86a1c;
+  --code-comment: #9aa0ab; --code-title: #3d6fb0; --code-type: #a04a8a;
+  --code-attr: #2b8a9a; --code-meta: #7a6a50;
 }
 [data-theme="dark"] {
-  --code-keyword: #6cc4f2; --code-string: #7fd4d9; --code-number: #f2b072;
-  --code-comment: #6d7380; --code-title: #b3a8f5; --code-type: #e7a2d4;
-  --code-attr: #5cc0f0; --code-meta: #cbb896;
+  --code-keyword: #5fd6ab; --code-string: #c4a6f0; --code-number: #f2b072;
+  --code-comment: #6d7380; --code-title: #8fb6ef; --code-type: #e7a2d4;
+  --code-attr: #6fcfd6; --code-meta: #cbb896;
 }
 .markdown .hljs-keyword, .markdown .hljs-selector-tag, .markdown .hljs-built_in, .markdown .hljs-literal { color: var(--code-keyword); }
 .markdown .hljs-string, .markdown .hljs-regexp, .markdown .hljs-addition, .markdown .hljs-symbol { color: var(--code-string); }
