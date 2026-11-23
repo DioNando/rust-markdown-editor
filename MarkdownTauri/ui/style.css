@@ -24,7 +24,6 @@
   /* Rôles — thème clair (le thème d'origine) */
   --canvas: var(--color-canvas);
   --sky: linear-gradient(var(--color-sky-top) 0%, var(--color-sky-middle) 58%, var(--color-sky-bottom) 100%);
-  --speck-opacity: 0.55;
   --surface: var(--color-canvas);            /* feuilles flottantes */
   --surface-solid: var(--color-canvas);
   --surface-2: var(--color-panel);           /* panneaux gris : code, schémas, sélection */
@@ -77,7 +76,6 @@
 [data-theme="dark"] {
   --canvas: #101114;
   --sky: linear-gradient(#2f3d50 0%, #3b4e64 58%, #4a5d72 100%);
-  --speck-opacity: 0.35;
   --surface: #1b1d22;
   --surface-solid: #1f2126;
   --surface-2: #272a31;
@@ -121,22 +119,6 @@ body::before {
   content: ""; position: fixed; z-index: 0; pointer-events: none;
   inset: 0;
   background: var(--sky);
-}
-/* Poussière de lumière : quelques points blancs épars dans le haut du ciel */
-body::after {
-  content: ""; position: fixed; z-index: 0; pointer-events: none;
-  inset: 0;
-  background-image:
-    radial-gradient(1.5px 1.5px at 12% 18%, #fff 50%, transparent 51%),
-    radial-gradient(1px 1px at 27% 9%, #fff 50%, transparent 51%),
-    radial-gradient(2px 2px at 41% 22%, #fff 50%, transparent 51%),
-    radial-gradient(1px 1px at 58% 6%, #fff 50%, transparent 51%),
-    radial-gradient(1.5px 1.5px at 71% 15%, #fff 50%, transparent 51%),
-    radial-gradient(1px 1px at 86% 25%, #fff 50%, transparent 51%),
-    radial-gradient(2px 2px at 93% 8%, #fff 50%, transparent 51%),
-    radial-gradient(1px 1px at 6% 40%, #fff 50%, transparent 51%),
-    radial-gradient(1.5px 1.5px at 97% 46%, #fff 50%, transparent 51%);
-  opacity: var(--speck-opacity);
 }
 .toolbar, .workspace, .statusbar { position: relative; z-index: 1; }
 
@@ -720,7 +702,7 @@ button.outline-item.active { background: var(--surface-2); color: var(--text-hea
   @page { margin: 16mm 14mm; }
   html, body { height: auto; overflow: visible; background: #fff !important; }
   body { display: block; padding: 0; }
-  body::before, body::after { display: none; }
+  body::before { display: none; }
   .toolbar, .statusbar, .outline, .menu, .findbar, .modal, .tabstrip, .drop-zone,
   .editor-pane, .divider, .group:not(.focused) { display: none !important; }
   .workspace, .group, .group-body { display: block !important; padding: 0; height: auto; overflow: visible; }
