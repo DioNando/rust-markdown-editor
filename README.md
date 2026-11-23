@@ -133,8 +133,8 @@ cargo run --release
 - [Tauri](https://tauri.app/) : fenêtre et pont Rust ⇄ interface
 - [pulldown-cmark](https://github.com/pulldown-cmark/pulldown-cmark) : analyse et rendu Markdown
 - [highlight.js](https://highlightjs.org/) (BSD-3), [KaTeX](https://katex.org/) (MIT), [Mermaid](https://mermaid.js.org/) (MIT)
-- Polices [Inter](https://rsms.me/inter/) et [Lora](https://github.com/cyrealtype/Lora-Cyrillic) (SIL OFL), icônes [Material Symbols](https://fonts.google.com/icons) (Apache 2.0)
-- Pictogramme de l'application : « document code » de [SVG Repo](https://www.svgrepo.com/)
+- Polices [Nunito Sans](https://fonts.google.com/specimen/Nunito+Sans) et [Inter](https://rsms.me/inter/) (SIL OFL), icônes [Material Symbols](https://fonts.google.com/icons) (Apache 2.0)
+- Logo : « Feather » de la collection [Entypo Icons](https://www.svgrepo.com/collection/entypo-icons/), par geakstr, licence [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/), via [SVG Repo](https://www.svgrepo.com/) ; recoloré
 
 ## Licence
 
