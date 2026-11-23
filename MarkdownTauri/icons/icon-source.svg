@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024">
+  <defs>
+    <linearGradient id="seam" x1="0" y1="1" x2="1" y2="0">
+      <stop offset="0" stop-color="#219ff8"/><stop offset="0.6" stop-color="#847dff"/>
+    </linearGradient>
+    <filter id="blur" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="70"/></filter>
+    <clipPath id="tile"><rect x="32" y="32" width="960" height="960" rx="216"/></clipPath>
+  </defs>
+  <g clip-path="url(#tile)">
+    <rect x="32" y="32" width="960" height="960" fill="#050505"/>
+    <ellipse cx="512" cy="1060" rx="520" ry="220" fill="url(#seam)" opacity="0.75" filter="url(#blur)"/>
+  </g>
+  <rect x="32.5" y="32.5" width="959" height="959" rx="215.5" fill="none" stroke="#ffffff" stroke-opacity="0.1" stroke-width="2"/>
+  <g transform="translate(240 240) scale(2.125)" fill="#ffffff">
+    <path d="m0,59.08h0s19.69,0,19.69,0h0c0-21.75,17.63-39.38,39.38-39.38h0V0h0C26.45,0,0,26.45,0,59.08Z"/>
+    <path d="m59.08,0v19.69h-.31V0h.31Zm196.92,196.92v.31h-19.69v-.31h19.69Z"/>
+    <path d="m177.23,78.77v177.23H0V78.77h177.23ZM19.69,236.31h137.85V98.46H19.69v137.85Z"/>
+    <path d="m197.23,236.31v19.69h-.31v-19.69h.31ZM19.69,58.77v.31H0v-.31h19.69Z"/>
+    <path d="m196.92,236.31v19.69h0c32.63,0,59.08-26.45,59.08-59.08h0s-19.69,0-19.69,0h0c0,21.75-17.63,39.38-39.38,39.38h0Z"/>
+    <path d="m98.46,118.46h-19.69v58.77h58.77v-19.69h0c-21.58,0-39.08-17.5-39.08-39.08Z"/>
+    <polygon points="78.77 0 78.77 58.77 98.46 58.77 197.23 58.77 197.23 157.54 197.23 177.23 256 177.23 256 0 78.77 0"/>
+  </g>
+</svg>

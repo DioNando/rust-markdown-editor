@@ -1357,7 +1357,8 @@ ${css}
 /* Page exportée */
 html, body { height: auto; }
 body.export { display: block; overflow: auto; user-select: text; padding: 40px 16px; }
-body.export .markdown { background: var(--surface); border-radius: var(--radius-cards); box-shadow: var(--shadow-xl); }
+body.export::before, body.export::after { display: none; }
+body.export .markdown { background: var(--surface); border-radius: var(--radius-cards); box-shadow: var(--shadow-card); }
 @media print { body.export { padding: 0; background: #fff; } body.export .markdown { box-shadow: none; } }
 </style>
 </head>

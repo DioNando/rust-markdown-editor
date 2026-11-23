@@ -106,7 +106,7 @@
           startOnLoad: false,
           securityLevel: "strict",
           theme: theme === "dark" ? "dark" : "neutral",
-          fontFamily: "Inter, Segoe UI, sans-serif",
+          fontFamily: "Nunito Sans, Segoe UI, sans-serif",
         });
         mermaidTheme = theme;
       }
